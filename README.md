@@ -9,3 +9,7 @@ You can change the default folder at any time.
 The main advantage of this application is the main focus on productivity. It is strongly advised to make use of the core functionality if provides, and remember the main keyboard shortcuts.
 
 When you first open the application, make sure you log in, browse to a specific folder, and select it for it to become your default folder.
+
+## Recognitions
+
+Thanks to [IconArchive](http://icons8.com) for the current icon :)
