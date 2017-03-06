@@ -51,7 +51,7 @@ app.on('ready', async () => {
     show: false,
     width: 1024,
     height: 728,
-    vibrancy: 'ultra-dark'
+    transparent: true
   });
 
   mainWindow.loadURL(urlDriveHome);
