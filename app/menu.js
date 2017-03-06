@@ -1,4 +1,4 @@
-import { app, Menu, shell, Tray } from 'electron';
+import { app, Menu, shell, Tray, BrowserWindow } from 'electron';
 import Promise from 'bluebird';
 
 // We load storage with promisify all, which creates all methods with Async promises
@@ -162,6 +162,29 @@ export default class MenuBuilder {
     }
   }
 
+  _openNewWindow(url) {
+    let newWindow = new BrowserWindow({
+      show: false,
+      width: 1024,
+      height: 728
+    });
+
+    newWindow.loadURL(url);
+
+    newWindow.webContents.on('did-finish-load', () => {
+      newWindow.show();
+      newWindow.focus();
+    });
+
+    newWindow.on('closed', () => {
+      newWindow = null;
+    });
+  }
+
+  _quitApp() {
+    app.quit();
+  }
+
   _buildDarwinTemplate() {
     const subMenuAbout = {
       label: 'GDrive App',
@@ -173,7 +196,7 @@ export default class MenuBuilder {
         { label: 'Hide GDrive App', accelerator: 'Command+H', selector: 'hide:' },
         { label: 'Show All', selector: 'unhideAllApplications:' },
         { type: 'separator' },
-        { label: 'Quit', accelerator: 'Command+Q', click: () => { app.quit() } }
+        { label: 'Quit', accelerator: 'Command+Q', click: () => { this._quitApp() } }
       ]
     };
     const subMenuEdit = {
@@ -221,26 +244,26 @@ export default class MenuBuilder {
           label: 'New GDoc',
           accelerator: 'Command+1',
           click: async () => {
-            this.mainWindow.loadURL(await this.driveUrlCreator.newDocUrl());
+            this._openNewWindow(await this.driveUrlCreator.newDocUrl());
           }
         },
         {
           label: 'New GSlide',
           accelerator: 'Command+2',
           click: async () => {
-            this.mainWindow.loadURL(await this.driveUrlCreator.newSlideUrl());
+            this._openNewWindow(await this.driveUrlCreator.newSlideUrl());
           }
         },
         {
           label: 'New GSheet',
           accelerator: 'Command+3',
           click: async () => {
-            this.mainWindow.loadURL(await this.driveUrlCreator.newSheetUrl());
+            this._openNewWindow(await this.driveUrlCreator.newSheetUrl());
           }
         },
         { type: 'separator' },
-        { label: 'Add account', click: () => { this.mainWindow.loadURL(this.driveUrlCreator.addAccountUrl()) } },
-        { label: 'Sign out', click: () => { this.mainWindow.loadURL(this.driveUrlCreator.signOutUrl()) } }
+        { label: 'Add account', click: () => { this._openNewWindow(this.driveUrlCreator.addAccountUrl()) } },
+        { label: 'Sign out', click: () => { this._openNewWindow(this.driveUrlCreator.signOutUrl()) } }
       ]
     };
     const subMenuWindow = {

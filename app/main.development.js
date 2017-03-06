@@ -50,7 +50,8 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     show: false,
     width: 1024,
-    height: 728
+    height: 728,
+    vibrancy: 'ultra-dark'
   });
 
   mainWindow.loadURL(urlDriveHome);
@@ -64,26 +65,32 @@ app.on('ready', async () => {
     mainWindow = null;
   });
 
+  mainWindow.on('close', (event) => {
+    app.quit();
+  });
+
   // Make sure any other documents open in the same window
   mainWindow.webContents.on('new-window', async (event, url) => {
     event.preventDefault();
-    mainWindow.loadURL(url);
-    // let newWindow = new BrowserWindow({
-    //   show: false,
-    //   width: 1024,
-    //   height: 728
-    // });
+    // mainWindow.loadURL(url);
 
-    // newWindow.loadURL(url);
+    // This code below allows for other windows to be opened
+    let newWindow = new BrowserWindow({
+      show: false,
+      width: 1024,
+      height: 728
+    });
 
-    // newWindow.webContents.on('did-finish-load', () => {
-    //   newWindow.show();
-    //   newWindow.focus();
-    // });
+    newWindow.loadURL(url);
 
-    // newWindow.on('closed', () => {
-    //   newWindow = null;
-    // });
+    newWindow.webContents.on('did-finish-load', () => {
+      newWindow.show();
+      newWindow.focus();
+    });
+
+    newWindow.on('closed', () => {
+      newWindow = null;
+    });
   });
 
   const menuBuilder = new MenuBuilder(mainWindow);
