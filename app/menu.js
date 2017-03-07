@@ -164,17 +164,13 @@ export default class MenuBuilder {
 
   _openNewWindow(url) {
     let newWindow = new BrowserWindow({
-      show: false,
+      show: true,
       width: 1024,
-      height: 728
+      height: 728,
+      title: "GDrive Native"
     });
 
     newWindow.loadURL(url);
-
-    newWindow.webContents.on('did-finish-load', () => {
-      newWindow.show();
-      newWindow.focus();
-    });
 
     newWindow.on('closed', () => {
       newWindow = null;

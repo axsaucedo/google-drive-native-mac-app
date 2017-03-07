@@ -48,18 +48,14 @@ app.on('ready', async () => {
   await installExtensions();
 
   mainWindow = new BrowserWindow({
-    show: false,
+    show: true,
     width: 1024,
     height: 728,
+    title: "GDrive Native",
     transparent: true
   });
 
   mainWindow.loadURL(urlDriveHome);
-
-  mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.show();
-    mainWindow.focus();
-  });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
@@ -76,17 +72,13 @@ app.on('ready', async () => {
 
     // This code below allows for other windows to be opened
     let newWindow = new BrowserWindow({
-      show: false,
+      show: true,
       width: 1024,
-      height: 728
+      height: 728,
+      title: "GDrive Native"
     });
 
     newWindow.loadURL(url);
-
-    newWindow.webContents.on('did-finish-load', () => {
-      newWindow.show();
-      newWindow.focus();
-    });
 
     newWindow.on('closed', () => {
       newWindow = null;
