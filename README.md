@@ -11,7 +11,7 @@
 
 ## Installation
 
-[Download the latest Mac version (DMG)]()
+[Download the latest Mac version (DMG)](https://drive.google.com/uc?export=download&id=0B8YIJESCOtaOclBXejQwZDVHUUU)
 
 ## Keyboard Shortcuts
 
