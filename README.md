@@ -1,6 +1,8 @@
 # GDrive Native
 This is a Google Drive native Mac application that focuses on productivity. It provides multiple keyboard shortcuts out of the box.
 
+![GDrive Video][https://github.com/axsauze/google-drive-native-mac-app/gdrivegif.gif]
+
 The app allows for fast creation of Google documents, spreadsheets and slides to a default folder.
 
 You can change the default folder at any time.
@@ -12,4 +14,5 @@ When you first open the application, make sure you log in, browse to a specific 
 
 ## Recognitions
 
-Thanks to [IconArchive](http://icons8.com) for the current icon :)
+Thanks to [IconArchive](http://icons8.com) for the current icon :)./gdrivegif.gif
+[./gdrivegif.gif]: 
