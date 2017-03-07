@@ -29,7 +29,21 @@
 * Close window - **CMD + W**
 * Quit App - **CMD + Q**
 
+# Dev Manual
+
+## Installation
+
+
+## Contributing
+
+
+
+## Roadmap
+
+
+
+
 # Recognitions
 
-Thanks to [IconArchive](http://icons8.com) for the current icon :)./gdrivegif.gif
+* Thanks to [IconArchive](http://icons8.com) for the current icon :)./gdrivegif.gif
 [./gdrivegif.gif]: 
